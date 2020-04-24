@@ -1,7 +1,7 @@
 package cs1302.sorting;
 
-/** Select Sort class.
- *
+/**
+ * Select Sort class.
  */
 
 public class SelectionSort {
