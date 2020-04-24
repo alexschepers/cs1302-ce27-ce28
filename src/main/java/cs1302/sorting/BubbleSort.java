@@ -9,19 +9,20 @@ public class BubbleSort {
 
     public static void main(String[] args) {
 
-        Integer [] array = {2, 1, 4, 5, 3, 10};
+        Integer [] array = {10, 1, 4, 5, 3, 2};
         System.out.println("Original Integer array: " + Arrays.toString(array));
-        bubble(array, 0, 4, Integer::compareTo);
-        System.out.println("Testing using just bubble method: " + Arrays.toString(array));
+        bubbleSort(array, 0, 5, Integer::compareTo);
+        System.out.println("Testing using just bubbleSort method: " + Arrays.toString(array));
 
-        String[] stringArray = {"hey", "yo", "sup", "hello"};
+        String[] stringArray = {"hey", "yo", "sup", "hello", "a"};
         System.out.println("Original String Array: " + Arrays.toString(stringArray));
         Comparator<String> lengthComp = ((a, b) ->
                 a.length() - b.length()
                     );
-        bubble(stringArray, 0, 4, lengthComp);
-        System.out.println("comparing by length with just bubble method: "
+        bubbleSort(stringArray, 0, 4, lengthComp);
+        System.out.println("comparing by length with just bubbleSort method: "
                            + Arrays.toString(stringArray));
+
 
     } // main
 
@@ -36,7 +37,7 @@ public class BubbleSort {
      */
     public static <T> void bubble(T[] array, int lo, int hi, Comparator<T> c) {
 
-        for (int i = lo; i < hi - 1; i++) {
+        for (int i = lo; i < hi; i++) {
             if (c.compare(array[i], array[i + 1]) > 0) {
                 T temp = array[i];
                 array[i] = array[i + 1];
@@ -46,5 +47,20 @@ public class BubbleSort {
         } // for
 
     } // bubble
+
+    /** bubbleSort method.
+     *
+     * @param <T>
+     * @param array
+     * @param lo
+     * @param hi
+     * @param c
+     */
+
+    public static <T> void bubbleSort(T[] array, int lo, int hi, Comparator<T> c) {
+        for (int i = lo; i <= hi; i++) {
+            bubble(array, lo, hi, c);
+        } // for
+    }
 
 } // BubbleSort
