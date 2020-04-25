@@ -15,19 +15,19 @@ public class SelectionSort {
         Integer[] array = {2, 3, 1, 4, 5};
 
         System.out.println("The array before sorting: " + Arrays.toString(array));
-        selectMin(array, 0, 4, Integer::compareTo);
+        selectionSort(array, 0, 4, Integer::compareTo);
         System.out.println("lo = 0, hi = 4");
         System.out.println("The array finding smallest int" +
-                           "and putting it in first position"
+                           "and putting it in first place after calling selectionSort"
                            + Arrays.toString(array));
 
         String[] arrayString = {"who", "what", "how", "why"};
 
         System.out.println("The array before sorting: " + Arrays.toString(arrayString));
-        selectMin(arrayString, 0, 3, String::compareTo);
+        selectionSort(arrayString, 0, 3, String::compareTo);
         System.out.println("lo = 0, hi = 3");
         System.out.println("The array finding the first" +
-                           "string lexocographically" +
+                           "string lexocographically after calling selectionSort" +
                            Arrays.toString(arrayString));
 
     } // main
@@ -53,5 +53,22 @@ public class SelectionSort {
         } // for
 
     } //selectMin
+
+    /** Sorts by selection sort.
+     *
+     * @param array the array to sort
+     * @param lo the low int
+     * @param hi the high int
+     * @param c the comparator
+     * @param <T> the type to be sorting
+     */
+
+    public static <T> void selectionSort(T[] array, int lo, int hi, Comparator<T> c) {
+
+        for (int i = lo; i < hi; i++) {
+            selectMin(array, i, hi, c);
+        }
+
+    } // selectionSort
 
 } // SelectionSort
