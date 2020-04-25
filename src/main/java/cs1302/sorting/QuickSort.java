@@ -14,22 +14,19 @@ public class QuickSort {
         Integer[] array = {1, 3, 2, 4, 5};
 
         System.out.println("Original Integer array: " + Arrays.toString(array));
-        int newPivot = partition(array, 0, 2, 4, Integer::compareTo);
-        System.out.println("Pivot: 2");
+        quickSort(array, 0, 4, Integer::compareTo);
         System.out.println("Lo = 0");
         System.out.println("Hi = 4");
-        System.out.println("After partition call: " + Arrays.toString(array));
-        System.out.println("New pivot: " + newPivot);
+        System.out.println("After quickSort call: " + Arrays.toString(array));
+
 
         String[] arrayString = {"hello", "world", "hey", "corona", "virus", "ahhh"};
 
         System.out.println("Original String array: " + Arrays.toString(arrayString));
-        int newPivot1 = partition(arrayString, 0, 3, 5, String::compareTo);
-        System.out.println("pivot: 3");
+        quickSort(arrayString, 0, 5, String::compareTo);
         System.out.println("lo = 0");
         System.out.println("hi = 5");
-        System.out.println("after partition call: " + Arrays.toString(arrayString));
-        System.out.println("New pivot: " + newPivot1);
+        System.out.println("after quickSort call: " + Arrays.toString(arrayString));
 
     } // main
 
@@ -68,5 +65,22 @@ public class QuickSort {
     } // partition
 
 
+    /** quickSort method.
+     *
+     * @param array
+     * @param lo
+     * @param hi
+     * @param c
+     * @param <T>
+     */
+
+    public static <T> void quickSort(T[] array, int lo, int hi, Comparator<T> c) {
+
+        int pivot = hi / 2 + lo / 2;
+        for (int i = lo; i < hi; i++) {
+            partition(array, lo, pivot, hi, c);
+        } //for
+
+    } //quickSort
 
 } // quicksort
